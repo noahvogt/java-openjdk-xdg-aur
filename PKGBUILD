@@ -12,7 +12,7 @@ _securityver=0
 _updatever=35
 # pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 pkgver=${_majorver}.u${_updatever}
-pkgrel=2
+pkgrel=3
 # _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 _git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
@@ -51,6 +51,10 @@ _nonheadless=(lib/libawt_xawt.so
               lib/libjawt.so
               lib/libjsound.so
               lib/libsplashscreen.so)
+
+_commondeps=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so'
+           'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
+           'glibc' 'gcc-libs')
 
 prepare() {
   cd ${_jdkdir}
@@ -133,11 +137,10 @@ check() {
 
 package_jre-openjdk-headless-xdg() {
   pkgdesc="OpenJDK Java ${_majorver} headless runtime environment - with improved Support for the XDG Base Directory Specification"
-  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so'
-           'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
-           'glibc' 'gcc-libs')
+  depends=("${_commondeps[@]}")
   optdepends=('java-rhino: for some JavaScript support')
   provides=("java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}")
+  conflicts=("jdk-openjdk" "jre-openjdk")
   backup=(etc/${pkgbase}/logging.properties
           etc/${pkgbase}/management/jmxremote.access
           etc/${pkgbase}/management/jmxremote.password.template
@@ -191,12 +194,28 @@ package_jre-openjdk-headless-xdg() {
 
 package_jre-openjdk-xdg() {
   pkgdesc="OpenJDK Java ${_majorver} full runtime environment - with improved Support for the XDG Base Directory Specification"
-  depends=("jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}" 'giflib' 'libgif.so'
-           'glibc' 'gcc-libs' 'libpng')
+  depends=("${_commondeps[@]}" 'giflib' 'libgif.so' 'glibc' 'gcc-libs' 'libpng')
   optdepends=('alsa-lib: for basic sound support'
               'gtk2: for the Gtk+ 2 look and feel - desktop usage'
               'gtk3: for the Gtk+ 3 look and feel - desktop usage')
-  provides=("java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk=${pkgver}-${pkgrel}")
+  provides=("java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
+            "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}")
+  conflicts=("jdk-openjdk" "jre-openjdk-headless")
+  backup=(etc/${pkgbase}/logging.properties
+          etc/${pkgbase}/management/jmxremote.access
+          etc/${pkgbase}/management/jmxremote.password.template
+          etc/${pkgbase}/management/management.properties
+          etc/${pkgbase}/net.properties
+          etc/${pkgbase}/security/java.policy
+          etc/${pkgbase}/security/java.security
+          etc/${pkgbase}/security/policy/README.txt
+          etc/${pkgbase}/security/policy/limited/default_US_export.policy
+          etc/${pkgbase}/security/policy/limited/default_local.policy
+          etc/${pkgbase}/security/policy/limited/exempt_local.policy
+          etc/${pkgbase}/security/policy/unlimited/default_US_export.policy
+          etc/${pkgbase}/security/policy/unlimited/default_local.policy
+          etc/${pkgbase}/sound.properties)
+
   install=install_jre-openjdk.sh
 
   cd ${_imgdir}/jre
@@ -237,7 +256,7 @@ package_jre-openjdk-xdg() {
 
 package_jdk-openjdk-xdg() {
   pkgdesc="OpenJDK Java ${_majorver} development kit - with improved Support for the XDG Base Directory Specification"
-  depends=("jre${_majorver}-openjdk=${pkgver}-${pkgrel}" 'java-environment-common=3'
+  depends=("${_commondeps[@]}" 'java-environment-common=3'
            'hicolor-icon-theme' 'libelf' 'glibc' 'gcc-libs' 'libgif.so' 'libpng'
            'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so'
            'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz'
@@ -249,9 +268,7 @@ package_jdk-openjdk-xdg() {
   provides=("java-environment=${_majorver}" "java-environment-openjdk=${_majorver}" "jdk${_majorver}-openjdk=${pkgver}-${pkgrel}"
             "java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
             "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}")
-  conflicts=("jre-openjdk" "jre-openjdk-headless"
-             "java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
-             "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}")
+  conflicts=("jre-openjdk" "jre-openjdk-headless")
   backup=(etc/${pkgbase}/logging.properties
           etc/${pkgbase}/management/jmxremote.access
           etc/${pkgbase}/management/jmxremote.password.template

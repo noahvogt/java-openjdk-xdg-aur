@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-xdg
 	pkgver = 21.u35
-	pkgrel = 2
+	pkgrel = 3
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = custom
@@ -73,7 +73,9 @@ pkgname = jre-openjdk-headless-xdg
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.u35-2
+	provides = jre21-openjdk-headless=21.u35-3
+	conflicts = jdk-openjdk
+	conflicts = jre-openjdk
 	backup = etc/java-openjdk-xdg/logging.properties
 	backup = etc/java-openjdk-xdg/management/jmxremote.access
 	backup = etc/java-openjdk-xdg/management/jmxremote.password.template
@@ -92,7 +94,20 @@ pkgname = jre-openjdk-headless-xdg
 pkgname = jre-openjdk-xdg
 	pkgdesc = OpenJDK Java 21 full runtime environment - with improved Support for the XDG Base Directory Specification
 	install = install_jre-openjdk.sh
-	depends = jre21-openjdk-headless=21.u35-2
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = nss
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = lcms2
+	depends = liblcms2.so
+	depends = libnet
+	depends = freetype2
+	depends = libfreetype.so
+	depends = harfbuzz
+	depends = libharfbuzz.so
+	depends = glibc
+	depends = gcc-libs
 	depends = giflib
 	depends = libgif.so
 	depends = glibc
@@ -103,12 +118,44 @@ pkgname = jre-openjdk-xdg
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.u35-2
+	provides = jre21-openjdk=21.u35-3
+	provides = java-runtime-headless=21
+	provides = java-runtime-headless-openjdk=21
+	provides = jre21-openjdk-headless=21.u35-3
+	conflicts = jdk-openjdk
+	conflicts = jre-openjdk-headless
+	backup = etc/java-openjdk-xdg/logging.properties
+	backup = etc/java-openjdk-xdg/management/jmxremote.access
+	backup = etc/java-openjdk-xdg/management/jmxremote.password.template
+	backup = etc/java-openjdk-xdg/management/management.properties
+	backup = etc/java-openjdk-xdg/net.properties
+	backup = etc/java-openjdk-xdg/security/java.policy
+	backup = etc/java-openjdk-xdg/security/java.security
+	backup = etc/java-openjdk-xdg/security/policy/README.txt
+	backup = etc/java-openjdk-xdg/security/policy/limited/default_US_export.policy
+	backup = etc/java-openjdk-xdg/security/policy/limited/default_local.policy
+	backup = etc/java-openjdk-xdg/security/policy/limited/exempt_local.policy
+	backup = etc/java-openjdk-xdg/security/policy/unlimited/default_US_export.policy
+	backup = etc/java-openjdk-xdg/security/policy/unlimited/default_local.policy
+	backup = etc/java-openjdk-xdg/sound.properties
 
 pkgname = jdk-openjdk-xdg
 	pkgdesc = OpenJDK Java 21 development kit - with improved Support for the XDG Base Directory Specification
 	install = install_jdk-openjdk.sh
-	depends = jre21-openjdk=21.u35-2
+	depends = java-runtime-common>=3
+	depends = ca-certificates-utils
+	depends = nss
+	depends = libjpeg-turbo
+	depends = libjpeg.so
+	depends = lcms2
+	depends = liblcms2.so
+	depends = libnet
+	depends = freetype2
+	depends = libfreetype.so
+	depends = harfbuzz
+	depends = libharfbuzz.so
+	depends = glibc
+	depends = gcc-libs
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
@@ -133,21 +180,15 @@ pkgname = jdk-openjdk-xdg
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=21
 	provides = java-environment-openjdk=21
-	provides = jdk21-openjdk=21.u35-2
+	provides = jdk21-openjdk=21.u35-3
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.u35-2
+	provides = jre21-openjdk=21.u35-3
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.u35-2
+	provides = jre21-openjdk-headless=21.u35-3
 	conflicts = jre-openjdk
 	conflicts = jre-openjdk-headless
-	conflicts = java-runtime=21
-	conflicts = java-runtime-openjdk=21
-	conflicts = jre21-openjdk=21.u35-2
-	conflicts = java-runtime-headless=21
-	conflicts = java-runtime-headless-openjdk=21
-	conflicts = jre21-openjdk-headless=21.u35-2
 	backup = etc/java-openjdk-xdg/logging.properties
 	backup = etc/java-openjdk-xdg/management/jmxremote.access
 	backup = etc/java-openjdk-xdg/management/jmxremote.password.template
@@ -165,10 +206,10 @@ pkgname = jdk-openjdk-xdg
 
 pkgname = openjdk-src-xdg
 	pkgdesc = OpenJDK Java 21 sources - with improved Support for the XDG Base Directory Specification
-	depends = jdk21-openjdk=21.u35-2
-	provides = openjdk21-src=21.u35-2
+	depends = jdk21-openjdk=21.u35-3
+	provides = openjdk21-src=21.u35-3
 
 pkgname = openjdk-doc-xdg
 	pkgdesc = OpenJDK Java 21 documentation - with improved Support for the XDG Base Directory Specification
-	depends = jdk21-openjdk=21.u35-2
-	provides = openjdk21-doc=21.u35-2
+	depends = jdk21-openjdk=21.u35-3
+	provides = openjdk21-doc=21.u35-3
