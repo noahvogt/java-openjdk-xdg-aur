@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-xdg
 	pkgver = 21.u35
-	pkgrel = 3
+	pkgrel = 4
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = custom
@@ -73,7 +73,7 @@ pkgname = jre-openjdk-headless-xdg
 	optdepends = java-rhino: for some JavaScript support
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.u35-3
+	provides = jre21-openjdk-headless=21.u35-4
 	conflicts = jdk-openjdk
 	conflicts = jre-openjdk
 	backup = etc/java-openjdk-xdg/logging.properties
@@ -118,10 +118,10 @@ pkgname = jre-openjdk-xdg
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.u35-3
+	provides = jre21-openjdk=21.u35-4
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.u35-3
+	provides = jre21-openjdk-headless=21.u35-4
 	conflicts = jdk-openjdk
 	conflicts = jre-openjdk-headless
 	backup = etc/java-openjdk-xdg/logging.properties
@@ -180,13 +180,13 @@ pkgname = jdk-openjdk-xdg
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-environment=21
 	provides = java-environment-openjdk=21
-	provides = jdk21-openjdk=21.u35-3
+	provides = jdk21-openjdk=21.u35-4
 	provides = java-runtime=21
 	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.u35-3
+	provides = jre21-openjdk=21.u35-4
 	provides = java-runtime-headless=21
 	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.u35-3
+	provides = jre21-openjdk-headless=21.u35-4
 	conflicts = jre-openjdk
 	conflicts = jre-openjdk-headless
 	backup = etc/java-openjdk-xdg/logging.properties
@@ -206,10 +206,10 @@ pkgname = jdk-openjdk-xdg
 
 pkgname = openjdk-src-xdg
 	pkgdesc = OpenJDK Java 21 sources - with improved Support for the XDG Base Directory Specification
-	depends = jdk21-openjdk=21.u35-3
-	provides = openjdk21-src=21.u35-3
+	depends = jdk21-openjdk=21.u35-4
+	provides = openjdk21-src=21.u35-4
 
 pkgname = openjdk-doc-xdg
 	pkgdesc = OpenJDK Java 21 documentation - with improved Support for the XDG Base Directory Specification
-	depends = jdk21-openjdk=21.u35-3
-	provides = openjdk21-doc=21.u35-3
+	depends = jdk21-openjdk=21.u35-4
+	provides = openjdk21-doc=21.u35-4
