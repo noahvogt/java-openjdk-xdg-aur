@@ -12,7 +12,7 @@ _securityver=0
 _updatever=35
 # pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 pkgver=${_majorver}.u${_updatever}
-pkgrel=4
+pkgrel=5
 # _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 _git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
@@ -194,7 +194,7 @@ package_jre-openjdk-headless-xdg() {
 
 package_jre-openjdk-xdg() {
   pkgdesc="OpenJDK Java ${_majorver} full runtime environment - with improved Support for the XDG Base Directory Specification"
-  depends=("${_commondeps[@]}" 'giflib' 'libgif.so' 'glibc' 'gcc-libs' 'libpng')
+  depends=("${_commondeps[@]}" 'giflib' 'libgif.so' 'libpng')
   optdepends=('alsa-lib: for basic sound support'
               'gtk2: for the Gtk+ 2 look and feel - desktop usage'
               'gtk3: for the Gtk+ 3 look and feel - desktop usage')
@@ -252,12 +252,19 @@ package_jre-openjdk-xdg() {
   # Link JKS keystore from ca-certificates-utils
   rm -f "${pkgdir}${_jvmdir}/lib/security/cacerts"
   ln -sf /etc/ssl/certs/java/cacerts "${pkgdir}${_jvmdir}/lib/security/cacerts"
+
+  # Desktop files
+  for f in java; do
+    install -Dm 644 \
+      "${srcdir}/freedesktop-${f}.desktop" \
+      "${pkgdir}/usr/share/applications/${f}-${pkgbase}.desktop"
+  done
 }
 
 package_jdk-openjdk-xdg() {
   pkgdesc="OpenJDK Java ${_majorver} development kit - with improved Support for the XDG Base Directory Specification"
   depends=("${_commondeps[@]}" 'java-environment-common=3'
-           'hicolor-icon-theme' 'libelf' 'glibc' 'gcc-libs' 'libgif.so' 'libpng'
+           'hicolor-icon-theme' 'libelf' 'libgif.so' 'libpng'
            'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so'
            'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz'
            'libharfbuzz.so')
@@ -290,7 +297,7 @@ package_jdk-openjdk-xdg() {
 
   install -dm 755 "${pkgdir}${_jvmdir}"
 
-  cp -a bin demo include jmods lib \
+  cp -a bin demo include jmods lib release \
     "${pkgdir}${_jvmdir}"
 
   rm "${pkgdir}${_jvmdir}/lib/src.zip"
