@@ -12,7 +12,7 @@ _securityver=2
 _updatever=13
 pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
 # pkgver=${_majorver}.u${_updatever}
-pkgrel=1
+pkgrel=2
 _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
 # _git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
@@ -22,7 +22,6 @@ makedepends=('java-environment>=17' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'lib
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
              'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc')
-options=(!lto)
 source=(https://github.com/openjdk/jdk${_majorver}u/archive/${_git_tag}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
@@ -116,7 +115,7 @@ build() {
     --with-lcms=system \
     --with-zlib=system \
     --with-harfbuzz=system \
-    --with-jvm-features=zgc,shenandoahgc \
+    --with-jvm-features=zgc,shenandoahgc,link-time-opt \
     --with-native-debug-symbols=internal \
     --enable-unlimited-crypto \
     --disable-warnings-as-errors \
