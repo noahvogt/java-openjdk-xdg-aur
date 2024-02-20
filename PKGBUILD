@@ -101,6 +101,13 @@ build() {
   unset CXXFLAGS
   unset LDFLAGS
 
+  if check_option "lto" "y"; then
+    jvm_features="zgc,shenandoahgc,link-time-opt"
+  else
+    jvm_features="zgc,shenandoahgc"
+  fi
+
+
   bash configure \
     --with-version-build="${_updatever}" \
     --with-version-pre="" \
@@ -115,7 +122,7 @@ build() {
     --with-lcms=system \
     --with-zlib=system \
     --with-harfbuzz=system \
-    --with-jvm-features=zgc,shenandoahgc,link-time-opt \
+    --with-jvm-features="${jvm_features}" \
     --with-native-debug-symbols=internal \
     --enable-unlimited-crypto \
     --disable-warnings-as-errors \
