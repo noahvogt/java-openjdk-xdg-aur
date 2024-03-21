@@ -6,15 +6,15 @@
 
 pkgbase=java-openjdk-xdg
 pkgname=('jre-openjdk-headless-xdg' 'jre-openjdk-xdg' 'jdk-openjdk-xdg' 'openjdk-src-xdg' 'openjdk-doc-xdg')
-_majorver=21
+_majorver=22
 _minorver=0
 _securityver=2
-_updatever=13
-pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
-# pkgver=${_majorver}.u${_updatever}
-pkgrel=2
-_git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
-# _git_tag=jdk-${_majorver}+${_updatever}
+_updatever=36
+# pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
+pkgver=${_majorver}.u${_updatever}
+pkgrel=1
+# _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
+_git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
 url='https://openjdk.java.net/'
 license=('custom')
@@ -28,10 +28,10 @@ source=(https://github.com/openjdk/jdk${_majorver}u/archive/${_git_tag}.tar.gz
         freedesktop-jshell.desktop
         xdg-basedir-compliant-fontconfig.patch
         xdg-basedir-compliant-userPrefs.patch)
-sha256sums=('4d8c8dd00164df0e344ed343d4ac20c1f30133f1029a83ff2c66c3557ed13a26'
-            '72111743ab6ab36854b0c85a504172983715d0798fce10bc4e35689b7d15fd93'
-            '8ecdf5c1605bafa58b3f7da615e6d8d3d943e3a2d3831930d6efa7815aacce07'
-            '50fc0d677489b73d549df2f08d759d5f057f200adbbab83ea5e87456152ee03e'
+sha256sums=('19cbda061fa41860fa2251f0994e7792c06aec63c8d0ae650353c850be5a8a4c'
+            '228fb453e6c652baad71abf734430cda08c287cb8df935ad3ad6d2e9346c7fdf'
+            'ed9e43756f450ca01647c495070044276ee9fa7810eb90c99d7e2a29c4a61ef2'
+            '93697b752739c1f233cf98f3fa3b945fc775de4d40a31dd21afccda7d0c9d01e'
             '25860396475759236e0edf66711b842143b0ddee47eed61e080da158bbc58ce9'
             '48f9e40c4ae8eb79d17fb676893a89b95ac43616827725a9d10de2b1f357642c')
 provides=('jre-openjdk-headless' 'jre-openjdk' 'jdk-openjdk' 'openjdk-src' 'openjdk-doc')

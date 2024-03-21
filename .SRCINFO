@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-xdg
-	pkgver = 21.0.2.u13
-	pkgrel = 2
+	pkgver = 22.u36
+	pkgrel = 1
 	url = https://openjdk.java.net/
 	arch = x86_64
 	license = custom
@@ -39,21 +39,21 @@ pkgbase = java-openjdk-xdg
 	conflicts = jdk-openjdk
 	conflicts = openjdk-src
 	conflicts = openjdk-doc
-	source = https://github.com/openjdk/jdk21u/archive/jdk-21.0.2+13.tar.gz
+	source = https://github.com/openjdk/jdk22u/archive/jdk-22+36.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
 	source = xdg-basedir-compliant-fontconfig.patch
 	source = xdg-basedir-compliant-userPrefs.patch
-	sha256sums = 4d8c8dd00164df0e344ed343d4ac20c1f30133f1029a83ff2c66c3557ed13a26
-	sha256sums = 72111743ab6ab36854b0c85a504172983715d0798fce10bc4e35689b7d15fd93
-	sha256sums = 8ecdf5c1605bafa58b3f7da615e6d8d3d943e3a2d3831930d6efa7815aacce07
-	sha256sums = 50fc0d677489b73d549df2f08d759d5f057f200adbbab83ea5e87456152ee03e
+	sha256sums = 19cbda061fa41860fa2251f0994e7792c06aec63c8d0ae650353c850be5a8a4c
+	sha256sums = 228fb453e6c652baad71abf734430cda08c287cb8df935ad3ad6d2e9346c7fdf
+	sha256sums = ed9e43756f450ca01647c495070044276ee9fa7810eb90c99d7e2a29c4a61ef2
+	sha256sums = 93697b752739c1f233cf98f3fa3b945fc775de4d40a31dd21afccda7d0c9d01e
 	sha256sums = 25860396475759236e0edf66711b842143b0ddee47eed61e080da158bbc58ce9
 	sha256sums = 48f9e40c4ae8eb79d17fb676893a89b95ac43616827725a9d10de2b1f357642c
 
 pkgname = jre-openjdk-headless-xdg
-	pkgdesc = OpenJDK Java 21 headless runtime environment - with improved Support for the XDG Base Directory Specification
+	pkgdesc = OpenJDK Java 22 headless runtime environment - with improved Support for the XDG Base Directory Specification
 	install = install_jre-openjdk-headless.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
@@ -70,9 +70,9 @@ pkgname = jre-openjdk-headless-xdg
 	depends = glibc
 	depends = gcc-libs
 	optdepends = java-rhino: for some JavaScript support
-	provides = java-runtime-headless=21
-	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.2.u13-2
+	provides = java-runtime-headless=22
+	provides = java-runtime-headless-openjdk=22
+	provides = jre22-openjdk-headless=22.u36-1
 	conflicts = jdk-openjdk
 	conflicts = jre-openjdk
 	backup = etc/java-openjdk-xdg/logging.properties
@@ -91,7 +91,7 @@ pkgname = jre-openjdk-headless-xdg
 	backup = etc/java-openjdk-xdg/sound.properties
 
 pkgname = jre-openjdk-xdg
-	pkgdesc = OpenJDK Java 21 full runtime environment - with improved Support for the XDG Base Directory Specification
+	pkgdesc = OpenJDK Java 22 full runtime environment - with improved Support for the XDG Base Directory Specification
 	install = install_jre-openjdk.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
@@ -113,12 +113,12 @@ pkgname = jre-openjdk-xdg
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-runtime=21
-	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.0.2.u13-2
-	provides = java-runtime-headless=21
-	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.2.u13-2
+	provides = java-runtime=22
+	provides = java-runtime-openjdk=22
+	provides = jre22-openjdk=22.u36-1
+	provides = java-runtime-headless=22
+	provides = java-runtime-headless-openjdk=22
+	provides = jre22-openjdk-headless=22.u36-1
 	conflicts = jdk-openjdk
 	conflicts = jre-openjdk-headless
 	backup = etc/java-openjdk-xdg/logging.properties
@@ -137,7 +137,7 @@ pkgname = jre-openjdk-xdg
 	backup = etc/java-openjdk-xdg/sound.properties
 
 pkgname = jdk-openjdk-xdg
-	pkgdesc = OpenJDK Java 21 development kit - with improved Support for the XDG Base Directory Specification
+	pkgdesc = OpenJDK Java 22 development kit - with improved Support for the XDG Base Directory Specification
 	install = install_jdk-openjdk.sh
 	depends = java-runtime-common>=3
 	depends = ca-certificates-utils
@@ -173,15 +173,15 @@ pkgname = jdk-openjdk-xdg
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
-	provides = java-environment=21
-	provides = java-environment-openjdk=21
-	provides = jdk21-openjdk=21.0.2.u13-2
-	provides = java-runtime=21
-	provides = java-runtime-openjdk=21
-	provides = jre21-openjdk=21.0.2.u13-2
-	provides = java-runtime-headless=21
-	provides = java-runtime-headless-openjdk=21
-	provides = jre21-openjdk-headless=21.0.2.u13-2
+	provides = java-environment=22
+	provides = java-environment-openjdk=22
+	provides = jdk22-openjdk=22.u36-1
+	provides = java-runtime=22
+	provides = java-runtime-openjdk=22
+	provides = jre22-openjdk=22.u36-1
+	provides = java-runtime-headless=22
+	provides = java-runtime-headless-openjdk=22
+	provides = jre22-openjdk-headless=22.u36-1
 	conflicts = jre-openjdk
 	conflicts = jre-openjdk-headless
 	backup = etc/java-openjdk-xdg/logging.properties
@@ -200,11 +200,11 @@ pkgname = jdk-openjdk-xdg
 	backup = etc/java-openjdk-xdg/sound.properties
 
 pkgname = openjdk-src-xdg
-	pkgdesc = OpenJDK Java 21 sources - with improved Support for the XDG Base Directory Specification
-	depends = jdk21-openjdk=21.0.2.u13-2
-	provides = openjdk21-src=21.0.2.u13-2
+	pkgdesc = OpenJDK Java 22 sources - with improved Support for the XDG Base Directory Specification
+	depends = jdk22-openjdk=22.u36-1
+	provides = openjdk22-src=22.u36-1
 
 pkgname = openjdk-doc-xdg
-	pkgdesc = OpenJDK Java 21 documentation - with improved Support for the XDG Base Directory Specification
-	depends = jdk21-openjdk=21.0.2.u13-2
-	provides = openjdk21-doc=21.0.2.u13-2
+	pkgdesc = OpenJDK Java 22 documentation - with improved Support for the XDG Base Directory Specification
+	depends = jdk22-openjdk=22.u36-1
+	provides = openjdk22-doc=22.u36-1
