@@ -132,7 +132,7 @@ build() {
   make images legacy-jre-image docs
 
   # https://bugs.openjdk.java.net/browse/JDK-8173610
-  find "../${_imgdir}" -iname '*.so' -exec chmod +x {} \;
+  find "${srcdir}/${_imgdir}" -iname '*.so' -exec chmod +x {} \;
 }
 
 check() {
