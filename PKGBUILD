@@ -17,7 +17,7 @@ pkgrel=1
 _git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
 url='https://openjdk.java.net/'
-license=('custom')
+license=('LicenseRef-Java')
 makedepends=('java-environment>=17' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
