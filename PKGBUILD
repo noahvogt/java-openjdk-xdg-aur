@@ -8,27 +8,30 @@ pkgbase=java-openjdk-xdg
 pkgname=('jre-openjdk-headless-xdg' 'jre-openjdk-xdg' 'jdk-openjdk-xdg' 'openjdk-src-xdg' 'openjdk-doc-xdg')
 _majorver=22
 _minorver=0
-_securityver=2
-_updatever=36
-# pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
-pkgver=${_majorver}.u${_updatever}
+_securityver=1
+_updatever=0
+pkgver=${_majorver}.${_minorver}.${_securityver}.u${_updatever}
+# pkgver=${_majorver}.u${_updatever}
 pkgrel=1
-# _git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
-_git_tag=jdk-${_majorver}+${_updatever}
+_git_tag=jdk-${_majorver}.${_minorver}.${_securityver}+${_updatever}
+# _git_tag=jdk-${_majorver}+${_updatever}
 arch=('x86_64')
 url='https://openjdk.java.net/'
 license=('LicenseRef-Java')
-makedepends=('java-environment>=17' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
+makedepends=('java-environment>=21' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
              'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc')
+optdepends=(
+  'gvfs: open links e.g. hyperlinks'
+)
 source=(https://github.com/openjdk/jdk${_majorver}u/archive/${_git_tag}.tar.gz
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop
         xdg-basedir-compliant-fontconfig.patch
         xdg-basedir-compliant-userPrefs.patch)
-sha256sums=('19cbda061fa41860fa2251f0994e7792c06aec63c8d0ae650353c850be5a8a4c'
+sha256sums=('538d5493431716f6f774506d96eae9087b574c3946570159db53615029fd6e6a'
             '228fb453e6c652baad71abf734430cda08c287cb8df935ad3ad6d2e9346c7fdf'
             'ed9e43756f450ca01647c495070044276ee9fa7810eb90c99d7e2a29c4a61ef2'
             '93697b752739c1f233cf98f3fa3b945fc775de4d40a31dd21afccda7d0c9d01e'
@@ -126,6 +129,7 @@ build() {
     --with-native-debug-symbols=internal \
     --enable-unlimited-crypto \
     --disable-warnings-as-errors \
+    --with-vendor-name="Arch Linux" \
     ${NUM_PROC_OPT}
     #--disable-javac-server
 
@@ -202,7 +206,6 @@ package_jre-openjdk-xdg() {
   pkgdesc="OpenJDK Java ${_majorver} full runtime environment - with improved Support for the XDG Base Directory Specification"
   depends=("${_commondeps[@]}" 'giflib' 'libgif.so' 'libpng')
   optdepends=('alsa-lib: for basic sound support'
-              'gtk2: for the Gtk+ 2 look and feel - desktop usage'
               'gtk3: for the Gtk+ 3 look and feel - desktop usage')
   provides=("java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
             "java-runtime-headless=${_majorver}" "java-runtime-headless-openjdk=${_majorver}" "jre${_majorver}-openjdk-headless=${pkgver}-${pkgrel}")
@@ -276,7 +279,6 @@ package_jdk-openjdk-xdg() {
            'libharfbuzz.so')
   optdepends=('java-rhino: for some JavaScript support'
               'alsa-lib: for basic sound support'
-              'gtk2: for the Gtk+ 2 look and feel - desktop usage'
               'gtk3: for the Gtk+ 3 look and feel - desktop usage')
   provides=("java-environment=${_majorver}" "java-environment-openjdk=${_majorver}" "jdk${_majorver}-openjdk=${pkgver}-${pkgrel}"
             "java-runtime=${_majorver}" "java-runtime-openjdk=${_majorver}" "jre${_majorver}-openjdk=${pkgver}-${pkgrel}"
